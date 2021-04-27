@@ -1,3 +1,4 @@
+<pre>
 ------------------------------\
 Title   : COMP 8505 FINAL PROJECT\
 Author  : Eric Wu, Hong-Kit Wu\
@@ -62,21 +63,21 @@ prerequisite" section)\
 ├── setup.sh             # Automated build scripts\
 └── README.md\
 \
----------------------  How to setup & prerequisite  -------------------------
------------------------------------------------------------------------------
-Make sure the JSON parser 'jq' is install. The module can be install by simply
-run 'apt-get install jq'. In addition, a webserver is required to host the 
-keylogger executables. Python proivdes an easy to use webserver module called
-"http.server".
------------------------------------------------------------------------------
-
-----------------------
-| Step 1
-----------------------
--> Fill in the require filed in setting.json
-(a template named setting_template.json is provided)
-Command fields
-* NIC_NAME          - name of network iterface used
+---------------------  How to setup & prerequisite  -------------------------\
+-----------------------------------------------------------------------------\
+Make sure the JSON parser 'jq' is install. The module can be install by simply\
+run 'apt-get install jq'. In addition, a webserver is required to host the\ 
+keylogger executables. Python proivdes an easy to use webserver module called\
+"http.server".\
+-----------------------------------------------------------------------------\
+\
+----------------------\
+| Step 1\
+----------------------\
+-> Fill in the require filed in setting.json\
+(a template named setting_template.json is provided)\
+Command fields\
+* NIC_NAME          - name of network iterface used\
 * IP                - ip address
 * CMD_CHANNEL_PORT  - port used for port knocking, send/receive command
 * FILE_EXFILT_PORT  - port used for exfiltrating files back backdoor 
@@ -123,3 +124,4 @@ linux machine. To run the executable, simply type './handler.elf' and
 './backdoor.elf' 
 This last step concludes the basic setup.
 -----------------------------------------------------------------------------
+</pre>
