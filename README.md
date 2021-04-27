@@ -37,9 +37,9 @@ prerequisite" section)
 
 --------------------------  Project Structure  ------------------------------
 -----------------------------------------------------------------------------
-├── backdoor__
-│   ├── build           # C object files__
-│   ├── src             # C Source files and header files__
+├── backdoor\
+│   ├── build           # C object files
+│   ├── src             # C Source files and header files
 │   |   └── header
 │   |   └── ...
 │   └── Makefile
