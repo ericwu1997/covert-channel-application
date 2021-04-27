@@ -1,83 +1,83 @@
 <pre>
-------------------------------\
-Title   : COMP 8505 FINAL PROJECT\
-Author  : Eric Wu, Hong-Kit Wu\
-Date    : 2020-12-06\
-Version : 5\
-------------------------------\
-\
-----------------------  Introduction & Background ---------------------------\
------------------------------------------------------------------------------\
-Design and implement a complete covert application that will allow a user to \
-access a port (that is otherwise closed) o a firewall, communicate with a\
-"disguised" backdoor application. The backdoor application will accept\
-commands and execute them; the results of the command execution will be sent\
-back to the remote client application\
-\
------------------------------  Basic Usage  ---------------------------------\
------------------------------------------------------------------------------\
-Use below commands to run the executable (each one on seperate linux machine)\
-Example:    ./handler.elf\
-            ./backdoor.elf\
-To issue command a to backdoor, simply type in a command like you normall would\
-do with a linux terminal. To exfiltrate a file from the backdoor, issue the\
-command "exfilt-file" follow by the name of the file you want to get. Full path\
-name must be used. For instance, to get the the shadown file, type the\ 
-following (dont type the "[CMD]:", this is just to show what it looks like on\
-the screen)\
-\
-[CMD]: exfilt-file /etc/shadow\
-\
-The backdoor installs a keylogger when run. However, to receive the file\ 
-containing the recorded keystrokes, the user must use the "exfilt-file" function\
-to do so. The backdoor does not send back the keystroke file automatically.\ 
-The saved keystroke file location is the same as what is specifed in the\ 
-"setting.json" config file (for additional details, refer "How to setup &\ 
-prerequisite" section)\
------------------------------------------------------------------------------\
-\
---------------------------  Project Structure  ------------------------------\
------------------------------------------------------------------------------\
-├── backdoor\
+------------------------------
+Title   : COMP 8505 FINAL PROJECT
+Author  : Eric Wu, Hong-Kit Wu
+Date    : 2020-12-06
+Version : 5
+------------------------------
+
+----------------------  Introduction & Background ---------------------------
+-----------------------------------------------------------------------------
+Design and implement a complete covert application that will allow a user to 
+access a port (that is otherwise closed) o a firewall, communicate with a
+"disguised" backdoor application. The backdoor application will accept
+commands and execute them; the results of the command execution will be sent
+back to the remote client application
+
+-----------------------------  Basic Usage  ---------------------------------
+-----------------------------------------------------------------------------
+Use below commands to run the executable (each one on seperate linux machine)
+Example:    ./handler.elf
+            ./backdoor.elf
+To issue command a to backdoor, simply type in a command like you normall would
+do with a linux terminal. To exfiltrate a file from the backdoor, issue the
+command "exfilt-file" follow by the name of the file you want to get. Full path
+name must be used. For instance, to get the the shadown file, type the 
+following (dont type the "[CMD]:", this is just to show what it looks like on
+the screen)
+
+[CMD]: exfilt-file /etc/shadow
+
+The backdoor installs a keylogger when run. However, to receive the file
+containing the recorded keystrokes, the user must use the "exfilt-file" function
+to do so. The backdoor does not send back the keystroke file automatically.
+The saved keystroke file location is the same as what is specifed in the
+"setting.json" config file (for additional details, refer "How to setup &
+prerequisite" section)
+-----------------------------------------------------------------------------
+
+--------------------------  Project Structure  ------------------------------
+-----------------------------------------------------------------------------
+├── backdoor
 │   ├── build           # C object files\
 │   ├── src             # C Source files and header files\
-│   |   └── header\
-│   |   └── ...\
-│   └── Makefile\
-|\
-├── handler\
-│   ├── build           # C object files\
-│   ├── src             # C Source files and header files\
-│   |   └── header\
-│   |   └── ...\
-│   └── Makefile\
-|\
-├── keylogger\
-│   ├── build           # C object files\
-│   ├── src             # C Source files and header files\
-│   |   └── header\
-│   |   └── ...\
-│   └── Makefile\
-|\
-├── setting.json         # Settings read by setup.sh\
-├── setup.sh             # Automated build scripts\
-└── README.md\
-\
----------------------  How to setup & prerequisite  -------------------------\
------------------------------------------------------------------------------\
-Make sure the JSON parser 'jq' is install. The module can be install by simply\
-run 'apt-get install jq'. In addition, a webserver is required to host the\ 
-keylogger executables. Python proivdes an easy to use webserver module called\
-"http.server".\
------------------------------------------------------------------------------\
-\
-----------------------\
+│   |   └── header
+│   |   └── ...
+│   └── Makefile
+|
+├── handler
+│   ├── build           # C object files
+│   ├── src             # C Source files and header files
+│   |   └── header
+│   |   └── ...
+│   └── Makefile
+|
+├── keylogger
+│   ├── build           # C object files
+│   ├── src             # C Source files and header files
+│   |   └── header
+│   |   └── ...
+│   └── Makefile
+|
+├── setting.json         # Settings read by setup.sh
+├── setup.sh             # Automated build scripts
+└── README.md
+
+---------------------  How to setup & prerequisite  -------------------------
+-----------------------------------------------------------------------------
+Make sure the JSON parser 'jq' is install. The module can be install by simply
+run 'apt-get install jq'. In addition, a webserver is required to host the
+keylogger executables. Python proivdes an easy to use webserver module called
+"http.server".
+-----------------------------------------------------------------------------
+
+----------------------
 | Step 1\
-----------------------\
--> Fill in the require filed in setting.json\
-(a template named setting_template.json is provided)\
-Command fields\
-* NIC_NAME          - name of network iterface used\
+----------------------
+-> Fill in the require filed in setting.json
+(a template named setting_template.json is provided)
+Command fields
+* NIC_NAME          - name of network iterface used
 * IP                - ip address
 * CMD_CHANNEL_PORT  - port used for port knocking, send/receive command
 * FILE_EXFILT_PORT  - port used for exfiltrating files back backdoor 
